@@ -1,0 +1,9 @@
+# Credenciales locales
+.env
+
+# Datos de entrada (se descargan con bin/descargar_datos.sh, pesan ~36 MB)
+datos/*.csv
+
+# Archivos de respaldo (pesan mucho; se documentan con capturas y logs)
+respaldos/*.bak
+respaldos/*.trn

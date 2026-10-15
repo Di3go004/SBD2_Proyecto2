@@ -1,0 +1,36 @@
+# =============================================================================
+# SQL Server 2022 (edición Developer, gratuita) con ALMACENAMIENTO PERSISTENTE
+# Requisito del enunciado (8.3): si se usa Docker, los datos deben persistir.
+#
+#   Levantar:  docker compose up -d
+#   Detener:   docker compose down        (los datos se conservan)
+#   NUNCA:     docker compose down -v     (borra el volumen con los datos)
+# =============================================================================
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: olimpiadas-sql
+    # Mac con chip M1/M2/M3: corre emulado (Rosetta). En Windows/Linux no afecta.
+    platform: linux/amd64
+    # root evita errores de permisos al escribir los .bak en ./respaldos
+    user: root
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+      MSSQL_SA_PASSWORD: "${SA_PASSWORD}"
+      TZ: "America/Guatemala"
+    ports:
+      - "1433:1433"
+    volumes:
+      # Datos del motor (bases, logs, msdb con el historial de respaldos)
+      - mssql_data:/var/opt/mssql
+      # Archivos de respaldo .bak, visibles desde tu máquina en ./respaldos
+      - ./respaldos:/var/opt/mssql/respaldos
+      # CSV de entrada (solo lectura)
+      - ./datos:/datos:ro
+      # Scripts .sql (solo lectura)
+      - ./scripts:/scripts:ro
+    restart: unless-stopped
+
+volumes:
+  mssql_data:

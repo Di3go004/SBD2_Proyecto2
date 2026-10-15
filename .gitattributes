@@ -1,0 +1,5 @@
+# Forzar fin de línea LF en scripts (evita errores "\r" al clonar en Windows)
+*.sh  text eol=lf
+*.sql text eol=lf
+*.yml text eol=lf
+*.md  text eol=lf
