@@ -1,0 +1,10 @@
+=== INICIO 2026-10-16 17:17:58 | backup/backup_diferencial.sql | BD=master TIPO=anio N=1 ===
+25 percent processed.
+50 percent processed.
+75 percent processed.
+100 percent processed.
+Processed 584 pages for database 'olimpiadas_anio', file 'olimpiadas_anio' on file 1.
+Processed 2 pages for database 'olimpiadas_anio', file 'olimpiadas_anio_log' on file 1.
+BACKUP DATABASE WITH DIFFERENTIAL successfully processed 586 pages in 0.093 seconds (49.185 MB/sec).
+The backup set on file 1 is valid.
+=== FIN    2026-10-16 17:17:59 ===

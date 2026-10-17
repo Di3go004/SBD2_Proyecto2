@@ -1,0 +1,10 @@
+=== INICIO 2026-10-16 17:40:06 | backup/listar_respaldos.sql | BD=msdb  ===
+base_datos|tipo_backup|fecha_inicio|fecha_fin|duracion_seg|tamano_mb|ruta_archivo
+----------|-----------|------------|---------|------------|---------|------------
+olimpiadas_anio|FULL|2026-10-16 17:14:08.000|2026-10-16 17:14:08.000|0|4.02|/var/opt/mssql/respaldos/anio_0_full.bak
+olimpiadas_anio|DIFERENCIAL|2026-10-16 17:17:58.000|2026-10-16 17:17:58.000|0|4.65|/var/opt/mssql/respaldos/anio_1_diff.bak
+olimpiadas_anio|DIFERENCIAL|2026-10-16 17:35:42.000|2026-10-16 17:35:45.000|3|8.09|/var/opt/mssql/respaldos/anio_2_diff.bak
+olimpiadas_anio|DIFERENCIAL|2026-10-16 17:39:18.000|2026-10-16 17:39:19.000|1|10.09|/var/opt/mssql/respaldos/anio_3_diff.bak
+
+(4 rows affected)
+=== FIN    2026-10-16 17:40:07 ===

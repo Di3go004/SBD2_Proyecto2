@@ -1,0 +1,37 @@
+=== INICIO 2026-10-16 18:03:26 | validacion/validar.sql | BD=olimpiadas_anio  ===
+base_de_datos|fecha_hora_servidor
+-------------|-------------------
+olimpiadas_anio|2026-10-16 18:03:25.9364022
+tabla|filas|huella
+-----|-----|------
+pais|231|-589490597
+edicion|3|1698491653
+deporte|36|620775921
+evento|326|-2119893436
+deportista|25082|-867392540
+participacion|32595|-290487026
+resultado|40210|551763563
+bitacora_carga|4|-1605935640
+carga_id|fecha_hora|tipo|descripcion|filas_fuente|filas_insertadas|duracion_ms
+--------|----------|----|-----------|------------|----------------|-----------
+1|2026-10-16 17:09:28|inicial|Carga inicial: catalogo de paises (NOC)|230|230|16
+2|2026-10-16 17:17:13|anio|Carga 1 por anio: Pekin 2008|13602|35738|717
+3|2026-10-16 17:35:06|anio|Carga 2 por anio: Londres 2012|12920|30391|1577
+4|2026-10-16 17:38:26|anio|Carga 3 por anio: Rio 2016|13688|32124|3797
+tabla|indice|tipo_indice|fragmentacion_pct|paginas
+-----|------|-----------|-----------------|-------
+bitacora_carga|pk_bitacora_carga|CLUSTERED|.00|1
+deporte|pk_deporte|CLUSTERED|.00|1
+deporte|uq_deporte_nombre|NONCLUSTERED|.00|1
+deportista|pk_deportista|CLUSTERED|99.49|196
+edicion|pk_edicion|CLUSTERED|.00|1
+edicion|uq_edicion_nombre|NONCLUSTERED|.00|1
+evento|pk_evento|CLUSTERED|33.33|3
+evento|uq_evento_nombre|NONCLUSTERED|66.67|3
+pais|pk_pais|CLUSTERED|.00|1
+pais|uq_pais_noc|NONCLUSTERED|.00|1
+participacion|pk_participacion|CLUSTERED|6.72|134
+participacion|uq_participacion|NONCLUSTERED|97.94|97
+resultado|pk_resultado|CLUSTERED|73.71|194
+DBCC CHECKDB terminado sin errores.
+=== FIN    2026-10-16 18:03:27 ===

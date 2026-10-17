@@ -1,0 +1,10 @@
+=== INICIO 2026-10-16 19:16:48 | backup/backup_diferencial.sql | BD=master TIPO=deportista N=3 ===
+27 percent processed.
+52 percent processed.
+77 percent processed.
+100 percent processed.
+Processed 304 pages for database 'olimpiadas_deportista', file 'olimpiadas_deportista' on file 1.
+Processed 2 pages for database 'olimpiadas_deportista', file 'olimpiadas_deportista_log' on file 1.
+BACKUP DATABASE WITH DIFFERENTIAL successfully processed 306 pages in 0.268 seconds (8.905 MB/sec).
+The backup set on file 1 is valid.
+=== FIN    2026-10-16 19:16:49 ===

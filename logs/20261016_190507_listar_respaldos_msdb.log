@@ -1,0 +1,14 @@
+=== INICIO 2026-10-16 19:05:07 | backup/listar_respaldos.sql | BD=msdb  ===
+base_datos|tipo_backup|fecha_inicio|fecha_fin|duracion_seg|tamano_mb|ruta_archivo
+----------|-----------|------------|---------|------------|---------|------------
+olimpiadas_anio|FULL|2026-10-16 17:14:08.000|2026-10-16 17:14:08.000|0|4.02|/var/opt/mssql/respaldos/anio_0_full.bak
+olimpiadas_anio|DIFERENCIAL|2026-10-16 17:17:58.000|2026-10-16 17:17:58.000|0|4.65|/var/opt/mssql/respaldos/anio_1_diff.bak
+olimpiadas_anio|DIFERENCIAL|2026-10-16 17:35:42.000|2026-10-16 17:35:45.000|3|8.09|/var/opt/mssql/respaldos/anio_2_diff.bak
+olimpiadas_anio|DIFERENCIAL|2026-10-16 17:39:18.000|2026-10-16 17:39:19.000|1|10.09|/var/opt/mssql/respaldos/anio_3_diff.bak
+olimpiadas_deporte|FULL|2026-10-16 18:39:50.000|2026-10-16 18:39:50.000|0|4.02|/var/opt/mssql/respaldos/deporte_0_full.bak
+olimpiadas_deporte|DIFERENCIAL|2026-10-16 18:59:57.000|2026-10-16 18:59:57.000|0|2.84|/var/opt/mssql/respaldos/deporte_1_diff.bak
+olimpiadas_deporte|DIFERENCIAL|2026-10-16 19:03:17.000|2026-10-16 19:03:17.000|0|3.02|/var/opt/mssql/respaldos/deporte_2_diff.bak
+olimpiadas_deporte|DIFERENCIAL|2026-10-16 19:04:36.000|2026-10-16 19:04:36.000|0|3.02|/var/opt/mssql/respaldos/deporte_3_diff.bak
+
+(8 rows affected)
+=== FIN    2026-10-16 19:05:08 ===

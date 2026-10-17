@@ -1,0 +1,35 @@
+=== INICIO 2026-10-16 19:14:32 | validacion/validar.sql | BD=olimpiadas_deportista  ===
+base_de_datos|fecha_hora_servidor
+-------------|-------------------
+olimpiadas_deportista|2026-10-16 19:14:32.2844518
+tabla|filas|huella
+-----|-----|------
+pais|230|1552172627
+edicion|1|1761517557
+deporte|1|782380821
+evento|1|2136004182
+deportista|1|-1054719984
+participacion|1|-2118920053
+resultado|1|-1203233813
+bitacora_carga|2|-1367869545
+carga_id|fecha_hora|tipo|descripcion|filas_fuente|filas_insertadas|duracion_ms
+--------|----------|----|-----------|------------|----------------|-----------
+1|2026-10-16 19:13:26|inicial|Carga inicial: catalogo de paises (NOC)|230|230|49
+2|2026-10-16 19:14:31|deportista|Carga 1 por deportista: Usain Bolt Atenas 2004|1|6|501
+tabla|indice|tipo_indice|fragmentacion_pct|paginas
+-----|------|-----------|-----------------|-------
+bitacora_carga|pk_bitacora_carga|CLUSTERED|.00|1
+deporte|pk_deporte|CLUSTERED|.00|1
+deporte|uq_deporte_nombre|NONCLUSTERED|.00|1
+deportista|pk_deportista|CLUSTERED|.00|1
+edicion|pk_edicion|CLUSTERED|.00|1
+edicion|uq_edicion_nombre|NONCLUSTERED|.00|1
+evento|pk_evento|CLUSTERED|.00|1
+evento|uq_evento_nombre|NONCLUSTERED|.00|1
+pais|pk_pais|CLUSTERED|.00|1
+pais|uq_pais_noc|NONCLUSTERED|.00|1
+participacion|pk_participacion|CLUSTERED|.00|1
+participacion|uq_participacion|NONCLUSTERED|.00|1
+resultado|pk_resultado|CLUSTERED|.00|1
+DBCC CHECKDB terminado sin errores.
+=== FIN    2026-10-16 19:14:33 ===

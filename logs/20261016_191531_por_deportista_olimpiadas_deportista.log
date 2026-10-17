@@ -1,0 +1,15 @@
+=== INICIO 2026-10-16 19:15:31 | carga/por_deportista.sql | BD=olimpiadas_deportista N=2 ===
+Warning: Null value is eliminated by an aggregate or other SET operation.
+carga|filas_fuente
+-----|------------
+Carga 2 por deportista: Usain Bolt Pekin 2008|3
+tabla|filas_nuevas
+-----|------------
+pais|0
+edicion|1
+deporte|0
+evento|2
+deportista|0
+participacion|1
+resultado|3
+=== FIN    2026-10-16 19:15:32 ===

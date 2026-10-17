@@ -1,0 +1,16 @@
+=== INICIO 2026-10-16 18:58:46 | carga/por_deporte.sql | BD=olimpiadas_deporte N=1 ===
+Warning: Null value is eliminated by an aggregate or other SET operation.
+Warning: Null value is eliminated by an aggregate or other SET operation.
+carga|filas_fuente
+-----|------------
+Carga 1 por deporte: 100 m femenino Pekin 2008|85
+tabla|filas_nuevas
+-----|------------
+pais|0
+edicion|1
+deporte|1
+evento|1
+deportista|85
+participacion|85
+resultado|85
+=== FIN    2026-10-16 18:58:49 ===

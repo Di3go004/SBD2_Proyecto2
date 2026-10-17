@@ -1,0 +1,16 @@
+=== INICIO 2026-10-16 18:03:23 | restauracion/restaurar_diferencial.sql | BD=master TIPO=anio N=3 ===
+26 percent processed.
+50 percent processed.
+75 percent processed.
+100 percent processed.
+Processed 504 pages for database 'olimpiadas_anio', file 'olimpiadas_anio' on file 1.
+Processed 2 pages for database 'olimpiadas_anio', file 'olimpiadas_anio_log' on file 1.
+RESTORE DATABASE successfully processed 506 pages in 0.058 seconds (68.089 MB/sec).
+37 percent processed.
+61 percent processed.
+86 percent processed.
+100 percent processed.
+Processed 1048 pages for database 'olimpiadas_anio', file 'olimpiadas_anio' on file 1.
+Processed 2 pages for database 'olimpiadas_anio', file 'olimpiadas_anio_log' on file 1.
+RESTORE DATABASE successfully processed 1050 pages in 0.096 seconds (85.408 MB/sec).
+=== FIN    2026-10-16 18:03:25 ===

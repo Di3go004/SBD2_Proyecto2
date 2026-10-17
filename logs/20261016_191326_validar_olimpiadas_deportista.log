@@ -1,0 +1,34 @@
+=== INICIO 2026-10-16 19:13:27 | validacion/validar.sql | BD=olimpiadas_deportista  ===
+base_de_datos|fecha_hora_servidor
+-------------|-------------------
+olimpiadas_deportista|2026-10-16 19:13:27.1350521
+tabla|filas|huella
+-----|-----|------
+pais|230|1552172627
+edicion|0|NULL
+deporte|0|NULL
+evento|0|NULL
+deportista|0|NULL
+participacion|0|NULL
+resultado|0|NULL
+bitacora_carga|1|-1699867143
+carga_id|fecha_hora|tipo|descripcion|filas_fuente|filas_insertadas|duracion_ms
+--------|----------|----|-----------|------------|----------------|-----------
+1|2026-10-16 19:13:26|inicial|Carga inicial: catalogo de paises (NOC)|230|230|49
+tabla|indice|tipo_indice|fragmentacion_pct|paginas
+-----|------|-----------|-----------------|-------
+bitacora_carga|pk_bitacora_carga|CLUSTERED|.00|1
+deporte|pk_deporte|CLUSTERED|.00|0
+deporte|uq_deporte_nombre|NONCLUSTERED|.00|0
+deportista|pk_deportista|CLUSTERED|.00|0
+edicion|pk_edicion|CLUSTERED|.00|0
+edicion|uq_edicion_nombre|NONCLUSTERED|.00|0
+evento|pk_evento|CLUSTERED|.00|0
+evento|uq_evento_nombre|NONCLUSTERED|.00|0
+pais|pk_pais|CLUSTERED|.00|1
+pais|uq_pais_noc|NONCLUSTERED|.00|1
+participacion|pk_participacion|CLUSTERED|.00|0
+participacion|uq_participacion|NONCLUSTERED|.00|0
+resultado|pk_resultado|CLUSTERED|.00|0
+DBCC CHECKDB terminado sin errores.
+=== FIN    2026-10-16 19:13:28 ===

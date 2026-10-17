@@ -1,0 +1,14 @@
+=== INICIO 2026-10-16 19:16:23 | carga/por_deportista.sql | BD=olimpiadas_deportista N=3 ===
+carga|filas_fuente
+-----|------------
+Carga 3 por deportista: Usain Bolt Londres 2012|3
+tabla|filas_nuevas
+-----|------------
+pais|0
+edicion|1
+deporte|0
+evento|0
+deportista|0
+participacion|1
+resultado|3
+=== FIN    2026-10-16 19:16:24 ===

@@ -1,0 +1,270 @@
+=== INICIO 2026-10-16 17:09:45 | validacion/ver_tablas.sql | BD=olimpiadas_anio  ===
+base_de_datos|fecha_hora_servidor
+-------------|-------------------
+olimpiadas_anio|2026-10-16 17:09:46.7895029
+
+(1 rows affected)
+pais_id|noc|region|notas
+-------|---|------|-----
+1|AFG|Afghanistan|NULL
+2|AHO|Curacao|Netherlands Antilles
+3|ALB|Albania|NULL
+4|ALG|Algeria|NULL
+5|AND|Andorra|NULL
+6|ANG|Angola|NULL
+7|ANT|Antigua|Antigua and Barbuda
+8|ANZ|Australia|Australasia
+9|ARG|Argentina|NULL
+10|ARM|Armenia|NULL
+11|ARU|Aruba|NULL
+12|ASA|American Samoa|NULL
+13|AUS|Australia|NULL
+14|AUT|Austria|NULL
+15|AZE|Azerbaijan|NULL
+16|BAH|Bahamas|NULL
+17|BAN|Bangladesh|NULL
+18|BAR|Barbados|NULL
+19|BDI|Burundi|NULL
+20|BEL|Belgium|NULL
+21|BEN|Benin|NULL
+22|BER|Bermuda|NULL
+23|BHU|Bhutan|NULL
+24|BIH|Bosnia and Herzegovina|NULL
+25|BIZ|Belize|NULL
+26|BLR|Belarus|NULL
+27|BOH|Czech Republic|Bohemia
+28|BOL|Boliva|NULL
+29|BOT|Botswana|NULL
+30|BRA|Brazil|NULL
+31|BRN|Bahrain|NULL
+32|BRU|Brunei|NULL
+33|BUL|Bulgaria|NULL
+34|BUR|Burkina Faso|NULL
+35|CAF|Central African Republic|NULL
+36|CAM|Cambodia|NULL
+37|CAN|Canada|NULL
+38|CAY|Cayman Islands|NULL
+39|CGO|Republic of Congo|NULL
+40|CHA|Chad|NULL
+41|CHI|Chile|NULL
+42|CHN|China|NULL
+43|CIV|Ivory Coast|NULL
+44|CMR|Cameroon|NULL
+45|COD|Democratic Republic of the Congo|NULL
+46|COK|Cook Islands|NULL
+47|COL|Colombia|NULL
+48|COM|Comoros|NULL
+49|CPV|Cape Verde|NULL
+50|CRC|Costa Rica|NULL
+51|CRO|Croatia|NULL
+52|CRT|Greece|Crete
+53|CUB|Cuba|NULL
+54|CYP|Cyprus|NULL
+55|CZE|Czech Republic|NULL
+56|DEN|Denmark|NULL
+57|DJI|Djibouti|NULL
+58|DMA|Dominica|NULL
+59|DOM|Dominican Republic|NULL
+60|ECU|Ecuador|NULL
+61|EGY|Egypt|NULL
+62|ERI|Eritrea|NULL
+63|ESA|El Salvador|NULL
+64|ESP|Spain|NULL
+65|EST|Estonia|NULL
+66|ETH|Ethiopia|NULL
+67|EUN|Russia|NULL
+68|FIJ|Fiji|NULL
+69|FIN|Finland|NULL
+70|FRA|France|NULL
+71|FRG|Germany|NULL
+72|FSM|Micronesia|NULL
+73|GAB|Gabon|NULL
+74|GAM|Gambia|NULL
+75|GBR|UK|NULL
+76|GBS|Guinea-Bissau|NULL
+77|GDR|Germany|NULL
+78|GEO|Georgia|NULL
+79|GEQ|Equatorial Guinea|NULL
+80|GER|Germany|NULL
+81|GHA|Ghana|NULL
+82|GRE|Greece|NULL
+83|GRN|Grenada|NULL
+84|GUA|Guatemala|NULL
+85|GUI|Guinea|NULL
+86|GUM|Guam|NULL
+87|GUY|Guyana|NULL
+88|HAI|Haiti|NULL
+89|HKG|China|Hong Kong
+90|HON|Honduras|NULL
+91|HUN|Hungary|NULL
+92|INA|Indonesia|NULL
+93|IND|India|NULL
+94|IOA|Individual Olympic Athletes|Individual Olympic Athletes
+95|IRI|Iran|NULL
+96|IRL|Ireland|NULL
+97|IRQ|Iraq|NULL
+98|ISL|Iceland|NULL
+99|ISR|Israel|NULL
+100|ISV|Virgin Islands, US|Virgin Islands
+101|ITA|Italy|NULL
+102|IVB|Virgin Islands, British|NULL
+103|JAM|Jamaica|NULL
+104|JOR|Jordan|NULL
+105|JPN|Japan|NULL
+106|KAZ|Kazakhstan|NULL
+107|KEN|Kenya|NULL
+108|KGZ|Kyrgyzstan|NULL
+109|KIR|Kiribati|NULL
+110|KOR|South Korea|NULL
+111|KOS|Kosovo|NULL
+112|KSA|Saudi Arabia|NULL
+113|KUW|Kuwait|NULL
+114|LAO|Laos|NULL
+115|LAT|Latvia|NULL
+116|LBA|Libya|NULL
+117|LBR|Liberia|NULL
+118|LCA|Saint Lucia|NULL
+119|LES|Lesotho|NULL
+120|LIB|Lebanon|NULL
+121|LIE|Liechtenstein|NULL
+122|LTU|Lithuania|NULL
+123|LUX|Luxembourg|NULL
+124|MAD|Madagascar|NULL
+125|MAL|Malaysia|NULL
+126|MAR|Morocco|NULL
+127|MAS|Malaysia|NULL
+128|MAW|Malawi|NULL
+129|MDA|Moldova|NULL
+130|MDV|Maldives|NULL
+131|MEX|Mexico|NULL
+132|MGL|Mongolia|NULL
+133|MHL|Marshall Islands|NULL
+134|MKD|Macedonia|NULL
+135|MLI|Mali|NULL
+136|MLT|Malta|NULL
+137|MNE|Montenegro|NULL
+138|MON|Monaco|NULL
+139|MOZ|Mozambique|NULL
+140|MRI|Mauritius|NULL
+141|MTN|Mauritania|NULL
+142|MYA|Myanmar|NULL
+143|NAM|Namibia|NULL
+144|NBO|Malaysia|North Borneo
+145|NCA|Nicaragua|NULL
+146|NED|Netherlands|NULL
+147|NEP|Nepal|NULL
+148|NFL|Canada|Newfoundland
+149|NGR|Nigeria|NULL
+150|NIG|Niger|NULL
+151|NOR|Norway|NULL
+152|NRU|Nauru|NULL
+153|NZL|New Zealand|NULL
+154|OMA|Oman|NULL
+155|PAK|Pakistan|NULL
+156|PAN|Panama|NULL
+157|PAR|Paraguay|NULL
+158|PER|Peru|NULL
+159|PHI|Philippines|NULL
+160|PLE|Palestine|NULL
+161|PLW|Palau|NULL
+162|PNG|Papua New Guinea|NULL
+163|POL|Poland|NULL
+164|POR|Portugal|NULL
+165|PRK|North Korea|NULL
+166|PUR|Puerto Rico|NULL
+167|QAT|Qatar|NULL
+168|RHO|Zimbabwe|NULL
+169|ROT|NULL|Refugee Olympic Team
+170|ROU|Romania|NULL
+171|RSA|South Africa|NULL
+172|RUS|Russia|NULL
+173|RWA|Rwanda|NULL
+174|SAA|Germany|NULL
+175|SAM|Samoa|NULL
+176|SCG|Serbia|Serbia and Montenegro
+177|SEN|Senegal|NULL
+178|SEY|Seychelles|NULL
+179|SIN|Singapore|NULL
+180|SKN|Saint Kitts|Turks and Caicos Islands
+181|SLE|Sierra Leone|NULL
+182|SLO|Slovenia|NULL
+183|SMR|San Marino|NULL
+184|SOL|Solomon Islands|NULL
+185|SOM|Somalia|NULL
+186|SRB|Serbia|NULL
+187|SRI|Sri Lanka|NULL
+188|SSD|South Sudan|NULL
+189|STP|Sao Tome and Principe|NULL
+190|SUD|Sudan|NULL
+191|SUI|Switzerland|NULL
+192|SUR|Suriname|NULL
+193|SVK|Slovakia|NULL
+194|SWE|Sweden|NULL
+195|SWZ|Swaziland|NULL
+196|SYR|Syria|NULL
+197|TAN|Tanzania|NULL
+198|TCH|Czech Republic|NULL
+199|TGA|Tonga|NULL
+200|THA|Thailand|NULL
+201|TJK|Tajikistan|NULL
+202|TKM|Turkmenistan|NULL
+203|TLS|Timor-Leste|NULL
+204|TOG|Togo|NULL
+205|TPE|Taiwan|NULL
+206|TTO|Trinidad|Trinidad and Tobago
+207|TUN|Tunisia|NULL
+208|TUR|Turkey|NULL
+209|TUV|NULL|Tuvalu
+210|UAE|United Arab Emirates|NULL
+211|UAR|Syria|United Arab Republic
+212|UGA|Uganda|NULL
+213|UKR|Ukraine|NULL
+214|UNK|NULL|Unknown
+215|URS|Russia|NULL
+216|URU|Uruguay|NULL
+217|USA|USA|NULL
+218|UZB|Uzbekistan|NULL
+219|VAN|Vanuatu|NULL
+220|VEN|Venezuela|NULL
+221|VIE|Vietnam|NULL
+222|VIN|Saint Vincent|NULL
+223|VNM|Vietnam|NULL
+224|WIF|Trinidad|West Indies Federation
+225|YAR|Yemen|North Yemen
+226|YEM|Yemen|NULL
+227|YMD|Yemen|South Yemen
+228|YUG|Serbia|Yugoslavia
+229|ZAM|Zambia|NULL
+230|ZIM|Zimbabwe|NULL
+
+(230 rows affected)
+edicion_id|nombre|anio|temporada|ciudad
+----------|------|----|---------|------
+
+(0 rows affected)
+deporte_id|nombre
+----------|------
+
+(0 rows affected)
+evento_id|deporte_id|nombre
+---------|----------|------
+
+(0 rows affected)
+deportista_id|nombre|sexo
+-------------|------|----
+
+(0 rows affected)
+participacion_id|deportista_id|edicion_id|pais_id|edad|estatura_cm|peso_kg
+----------------|-------------|----------|-------|----|-----------|-------
+
+(0 rows affected)
+participacion_id|evento_id|equipo|medalla
+----------------|---------|------|-------
+
+(0 rows affected)
+carga_id|fecha_hora|tipo|descripcion|filas_fuente|filas_insertadas|duracion_ms
+--------|----------|----|-----------|------------|----------------|-----------
+1|2026-10-16 17:09:28|inicial|Carga inicial: catalogo de paises (NOC)|230|230|16
+
+(1 rows affected)
+=== FIN    2026-10-16 17:09:46 ===

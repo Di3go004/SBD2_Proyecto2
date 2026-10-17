@@ -1,0 +1,16 @@
+=== INICIO 2026-10-16 17:35:04 | carga/por_anio.sql | BD=olimpiadas_anio N=2 ===
+Warning: Null value is eliminated by an aggregate or other SET operation.
+Warning: Null value is eliminated by an aggregate or other SET operation.
+carga|filas_fuente
+-----|------------
+Carga 2 por anio: Londres 2012|12920
+tabla|filas_nuevas
+-----|------------
+pais|0
+edicion|1
+deporte|0
+evento|17
+deportista|6936
+participacion|10517
+resultado|12920
+=== FIN    2026-10-16 17:35:06 ===

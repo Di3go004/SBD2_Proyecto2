@@ -1,0 +1,7 @@
+=== INICIO 2026-10-16 16:58:37 | ddl/01_staging.sql | BD=master  ===
+Changed database context to 'olimpiadas_staging'.
+tabla|filas|esperado
+-----|-----|--------
+athlete_events_raw|271116|271116
+noc_regions_raw|230|230
+=== FIN    2026-10-16 16:58:41 ===

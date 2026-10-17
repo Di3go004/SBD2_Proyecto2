@@ -1,0 +1,35 @@
+=== INICIO 2026-10-16 19:08:30 | validacion/validar.sql | BD=olimpiadas_deporte  ===
+base_de_datos|fecha_hora_servidor
+-------------|-------------------
+olimpiadas_deporte|2026-10-16 19:08:31.1223494
+tabla|filas|huella
+-----|-----|------
+pais|230|1552172627
+edicion|1|681820147
+deporte|1|782380821
+evento|1|-1216196125
+deportista|85|-1254306565
+participacion|85|-128810212
+resultado|85|-1565812036
+bitacora_carga|2|554257790
+carga_id|fecha_hora|tipo|descripcion|filas_fuente|filas_insertadas|duracion_ms
+--------|----------|----|-----------|------------|----------------|-----------
+1|2026-10-16 18:24:41|inicial|Carga inicial: catalogo de paises (NOC)|230|230|36
+2|2026-10-16 18:58:49|deporte|Carga 1 por deporte: 100 m femenino Pekin 2008|85|258|1124
+tabla|indice|tipo_indice|fragmentacion_pct|paginas
+-----|------|-----------|-----------------|-------
+bitacora_carga|pk_bitacora_carga|CLUSTERED|.00|1
+deporte|pk_deporte|CLUSTERED|.00|1
+deporte|uq_deporte_nombre|NONCLUSTERED|.00|1
+deportista|pk_deportista|CLUSTERED|.00|1
+edicion|pk_edicion|CLUSTERED|.00|1
+edicion|uq_edicion_nombre|NONCLUSTERED|.00|1
+evento|pk_evento|CLUSTERED|.00|1
+evento|uq_evento_nombre|NONCLUSTERED|.00|1
+pais|pk_pais|CLUSTERED|.00|1
+pais|uq_pais_noc|NONCLUSTERED|.00|1
+participacion|pk_participacion|CLUSTERED|.00|1
+participacion|uq_participacion|NONCLUSTERED|.00|1
+resultado|pk_resultado|CLUSTERED|.00|1
+DBCC CHECKDB terminado sin errores.
+=== FIN    2026-10-16 19:08:31 ===

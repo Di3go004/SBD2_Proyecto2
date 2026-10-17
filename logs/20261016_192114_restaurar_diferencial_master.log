@@ -1,0 +1,16 @@
+=== INICIO 2026-10-16 19:21:14 | restauracion/restaurar_diferencial.sql | BD=master TIPO=deportista N=1 ===
+26 percent processed.
+50 percent processed.
+75 percent processed.
+100 percent processed.
+Processed 504 pages for database 'olimpiadas_deportista', file 'olimpiadas_deportista' on file 1.
+Processed 2 pages for database 'olimpiadas_deportista', file 'olimpiadas_deportista_log' on file 1.
+RESTORE DATABASE successfully processed 506 pages in 0.108 seconds (36.566 MB/sec).
+27 percent processed.
+52 percent processed.
+77 percent processed.
+100 percent processed.
+Processed 304 pages for database 'olimpiadas_deportista', file 'olimpiadas_deportista' on file 1.
+Processed 2 pages for database 'olimpiadas_deportista', file 'olimpiadas_deportista_log' on file 1.
+RESTORE DATABASE successfully processed 306 pages in 0.068 seconds (35.098 MB/sec).
+=== FIN    2026-10-16 19:21:16 ===

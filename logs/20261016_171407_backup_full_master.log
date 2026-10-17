@@ -1,0 +1,10 @@
+=== INICIO 2026-10-16 17:14:07 | backup/backup_full.sql | BD=master TIPO=anio ===
+26 percent processed.
+50 percent processed.
+75 percent processed.
+100 percent processed.
+Processed 504 pages for database 'olimpiadas_anio', file 'olimpiadas_anio' on file 1.
+Processed 2 pages for database 'olimpiadas_anio', file 'olimpiadas_anio_log' on file 1.
+BACKUP DATABASE successfully processed 506 pages in 0.229 seconds (17.245 MB/sec).
+The backup set on file 1 is valid.
+=== FIN    2026-10-16 17:14:09 ===

@@ -1,0 +1,16 @@
+=== INICIO 2026-10-16 19:04:01 | carga/por_deporte.sql | BD=olimpiadas_deporte N=3 ===
+Warning: Null value is eliminated by an aggregate or other SET operation.
+Warning: Null value is eliminated by an aggregate or other SET operation.
+carga|filas_fuente
+-----|------------
+Carga 3 por deporte: 100 m femenino Rio 2016|80
+tabla|filas_nuevas
+-----|------------
+pais|0
+edicion|1
+deporte|0
+evento|0
+deportista|56
+participacion|80
+resultado|80
+=== FIN    2026-10-16 19:04:03 ===
