@@ -2,6 +2,8 @@
 
 ![ER](./ERD.png)
 
+El detalle de cada columna, tipo, clave y restricción está en [`diccionario_datos.md`](diccionario_datos.md).
+
 Tabla auxiliar (no forma parte del modelo de negocio): `BITACORA_CARGA (carga_id PK, fecha_hora, tipo, descripcion, filas_fuente, filas_insertadas, duracion_ms)`. Registra cada carga y permite comprobar, después de restaurar, qué cargas contiene la base.
 
 ## Justificación de la normalización (3FN)

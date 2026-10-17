@@ -4,6 +4,11 @@ Datos de los Juegos Olímpicos cargados en **SQL Server 2022** (Docker, almacena
 
 - Modelo entidad-relación: [`docs/modelo_er.md`](docs/modelo_er.md)
 - Conteos esperados después de cada carga: [`docs/conteos_esperados.md`](docs/conteos_esperados.md)
+- Manual de usuario completo: [`docs/manual_usuario.md`](docs/manual_usuario.md)
+- Manual técnico editable: [`docs/manual_tecnico.md`](docs/manual_tecnico.md)
+- Manual técnico en PDF: [`docs/manual_tecnico.pdf`](docs/manual_tecnico.pdf)
+- Diccionario de datos: [`docs/diccionario_datos.md`](docs/diccionario_datos.md)
+- Tabla de tiempos: [`docs/tabla_tiempos.md`](docs/tabla_tiempos.md)
 
 ---
 
@@ -124,6 +129,18 @@ capturas/               evidencias por tipo de carga
 logs/                   salida de cada comando, con fecha y hora
 respaldos/              archivos .bak (no se suben a git)
 datos/                  CSV de entrada (no se suben a git)
+```
+
+La documentación técnica se regenera desde el Markdown con PowerShell:
+
+```powershell
+.\bin\generar_manual_tecnico.ps1
+```
+
+El comando crea los tres gráficos SVG, el HTML y `docs/manual_tecnico.pdf`. Para completar la ficha de hardware de la máquina que ejecutó los ciclos:
+
+```powershell
+.\bin\registrar_especificaciones.ps1
 ```
 
 ---

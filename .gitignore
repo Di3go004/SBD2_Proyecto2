@@ -7,3 +7,7 @@ datos/*.csv
 # Archivos de respaldo (pesan mucho; se documentan con capturas y logs)
 respaldos/*.bak
 respaldos/*.trn
+
+# Caché local de Python al regenerar la documentación
+__pycache__/
+*.py[cod]

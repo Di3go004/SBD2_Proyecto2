@@ -11,4 +11,6 @@ Este directorio contiene los registros oficiales generados durante la ejecución
 3. **preparar_bd / crear_bd**: Creación de esquema y tablas normalizadas para cada tipo de carga.
 4. **eliminar_bd**: Evidencia de ejecución de `DROP DATABASE` con rollback inmediato de conexiones previas a la restauración.
 5. **restaurar_full / restaurar_diferencial**: Registros de restauración con conteo de páginas procesadas, velocidad de transferencia (MB/s) y tiempo en segundos.
-6. **validar_olimpiadas_<tipo>**: Reportes de conteo por tabla, huellas criptográficas, tiempos de inserción y resultado de `DBCC CHECKDB` sin errores.
+6. **validar_olimpiadas_<tipo>**: Reportes de conteo por tabla, huellas por checksum, tiempos de inserción y resultado de `DBCC CHECKDB` sin errores.
+
+Los logs del 14 de octubre corresponden a la prueba inicial. La tabla oficial de tiempos usa los ciclos completos del 16 de octubre. El archivo `docs/tabla_tiempos.csv` relaciona cada escenario con sus logs de restauración y validación.

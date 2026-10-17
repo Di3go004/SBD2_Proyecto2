@@ -1,0 +1,13 @@
+tipo,escenario,full_mb,diferencial_mb,total_mb,restore_full_s,restore_diff_s,tiempo_restore_total_s,conteos_ok,huellas_ok,log_restore,log_validacion
+anio,Solo FULL,4.02,,4.02,0.095,,0.095,SI,SI,logs/20261016_174324_restaurar_full_master.log,logs/20261016_174326_validar_olimpiadas_anio.log
+anio,FULL + DIFF 1,4.02,4.65,8.67,0.125,0.162,0.287,SI,SI,logs/20261016_175332_restaurar_diferencial_master.log,logs/20261016_175336_validar_olimpiadas_anio.log
+anio,FULL + DIFF 2,4.02,8.09,12.11,0.068,0.089,0.157,SI,SI,logs/20261016_175548_restaurar_diferencial_master.log,logs/20261016_175550_validar_olimpiadas_anio.log
+anio,FULL + DIFF 3,4.02,10.09,14.11,0.058,0.096,0.154,SI,SI,logs/20261016_180323_restaurar_diferencial_master.log,logs/20261016_180325_validar_olimpiadas_anio.log
+deporte,Solo FULL,4.02,,4.02,0.088,,0.088,SI,SI,logs/20261016_190715_restaurar_full_master.log,logs/20261016_190717_validar_olimpiadas_deporte.log
+deporte,FULL + DIFF 1,4.02,2.84,6.86,0.108,0.061,0.169,SI,SI,logs/20261016_190828_restaurar_diferencial_master.log,logs/20261016_190830_validar_olimpiadas_deporte.log
+deporte,FULL + DIFF 2,4.02,3.02,7.04,0.090,0.078,0.168,SI,SI,logs/20261016_190914_restaurar_diferencial_master.log,logs/20261016_190917_validar_olimpiadas_deporte.log
+deporte,FULL + DIFF 3,4.02,3.02,7.04,0.078,0.078,0.156,SI,SI,logs/20261016_191002_restaurar_diferencial_master.log,logs/20261016_191005_validar_olimpiadas_deporte.log
+deportista,Solo FULL,4.02,,4.02,0.085,,0.085,SI,SI,logs/20261016_192027_restaurar_full_master.log,logs/20261016_192029_validar_olimpiadas_deportista.log
+deportista,FULL + DIFF 1,4.02,2.46,6.48,0.108,0.068,0.176,SI,SI,logs/20261016_192114_restaurar_diferencial_master.log,logs/20261016_192117_validar_olimpiadas_deportista.log
+deportista,FULL + DIFF 2,4.02,2.46,6.48,0.134,0.076,0.210,SI,SI,logs/20261016_192219_restaurar_diferencial_master.log,logs/20261016_192222_validar_olimpiadas_deportista.log
+deportista,FULL + DIFF 3,4.02,2.46,6.48,0.103,0.072,0.175,SI,SI,logs/20261016_192314_restaurar_diferencial_master.log,logs/20261016_192318_validar_olimpiadas_deportista.log

@@ -1,0 +1,103 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Manual técnico</title><style>
+    @page { size: A4; margin: 18mm 16mm 18mm 16mm; }
+    body { font-family: Arial, sans-serif; color: #222; font-size: 10.5pt; line-height: 1.35; }
+    h1 { font-size: 22pt; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 5px; }
+    h2 { font-size: 15pt; margin-top: 22px; border-bottom: 1px solid #aaa; padding-bottom: 3px; }
+    h3 { font-size: 12pt; margin-top: 16px; }
+    p { margin: 6px 0; }
+    ul, ol { margin-top: 4px; }
+    code { font-family: Consolas, monospace; font-size: 9pt; background: #f0f0f0; padding: 1px 3px; }
+    pre { font-family: Consolas, monospace; font-size: 8.5pt; background: #f4f4f4; border: 1px solid #ccc; padding: 8px; white-space: pre-wrap; }
+    table { border-collapse: collapse; width: 100%; margin: 8px 0 12px; font-size: 8.7pt; }
+    th, td { border: 1px solid #999; padding: 4px 5px; vertical-align: top; }
+    th { background: #e8e8e8; font-weight: bold; }
+    img { display: block; max-width: 100%; height: auto; margin: 10px auto; page-break-inside: avoid; }
+    a { color: #222; text-decoration: underline; }
+    hr { border: 0; border-top: 1px solid #aaa; }
+    </style></head><body><h1>Manual técnico</h1>
+<h2>Proyecto 2 — Sistemas de Bases de Datos 2</h2>
+<p><strong>Tema:</strong> respaldo físico y restauración de SQL Server 2022</p>
+<p><strong>Fecha de las ejecuciones oficiales:</strong> 16 de octubre de 2026</p>
+<h2>1. Objetivo</h2>
+<p>El proyecto compara una estrategia de respaldo FULL más diferenciales para tres formas de cargar el mismo dataset olímpico:</p>
+<ol><li>Por año: Pekín 2008, Londres 2012 y Río 2016.</li><li>Por deporte: <code>Athletics Women's 100 metres</code> en esas tres ediciones.</li><li>Por deportista: Usain Bolt en Atenas 2004, Pekín 2008 y Londres 2012.</li></ol>
+<p>Después de cada carga se genera un respaldo. Luego se elimina la base, se restaura el FULL o el FULL más un diferencial y se comprueban conteos, huellas e integridad física.</p>
+<h2>2. Fuente y alcance de los datos</h2>
+<p>Se utiliza <strong>120 years of Olympic history: athletes and results</strong>, publicado originalmente por Randi Griffin a partir de datos de sports-reference.com. El repositorio descarga la copia pública de TidyTuesday del 27 de julio de 2021:</p>
+<p><a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-07-27">https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-07-27</a></p>
+<p>El staging contiene 271,116 resultados y 230 registros de países. La base de staging conserva el CSV en tablas crudas y expone una vista con conversiones de tipos, valores faltantes y medallas traducidas.</p>
+<h2>3. Arquitectura de ejecución</h2>
+<p>La solución se compone de:</p>
+<ul><li>SQL Server 2022 Developer en el contenedor <code>olimpiadas-sql</code>.</li><li>Un volumen Docker <code>mssql_data</code> para las bases y el historial de <code>msdb</code>.</li><li>Un volumen <code>./respaldos</code> montado en <code>/var/opt/mssql/respaldos</code>.</li><li>Un volumen de solo lectura para <code>datos/</code> y otro para <code>scripts/</code>.</li><li>Scripts Bash que llaman a <code>sqlcmd</code> dentro del contenedor.</li></ul>
+<p>Las bases de trabajo son <code>olimpiadas_anio</code>, <code>olimpiadas_deporte</code> y <code>olimpiadas_deportista</code>. Cada una se recrea desde cero antes de su ciclo oficial, de modo que los respaldos de un tipo no dependen de otro.</p>
+<h2>4. Modelo relacional</h2>
+<p>El modelo está normalizado a tercera forma normal. <code>deporte</code> agrupa <code>evento</code>; <code>participacion</code> relaciona un deportista, una edición y un país; <code>resultado</code> relaciona una participación con un evento. La bitácora es una tabla auxiliar de auditoría.</p>
+<p><img src="ERD.png" alt="Modelo entidad-relación"></p>
+<p>El diccionario completo de columnas, tipos, claves y restricciones está en <a href="diccionario_datos.md"><code>diccionario_datos.md</code></a>. La justificación de la normalización está en <a href="modelo_er.md"><code>modelo_er.md</code></a>.</p>
+<h3>4.1 Criterios de normalización</h3>
+<ul><li>Los atributos del deportista no se repiten en cada resultado.</li><li>Edad, estatura, peso y país pertenecen a la participación del deportista en una edición.</li><li>Equipo y medalla pertenecen al resultado de una participación en un evento.</li><li>El evento referencia al deporte para evitar repetir el nombre del deporte.</li><li>Las restricciones UNIQUE impiden duplicar países, ediciones, deportes, eventos o participaciones.</li></ul>
+<h2>5. Plan de respaldo y restauración</h2>
+<p>Después de la carga inicial de los 230 países se genera un respaldo FULL:</p>
+<pre><code>BACKUP DATABASE olimpiadas_&lt;tipo&gt;
+TO DISK = N&#x27;/var/opt/mssql/respaldos/&lt;tipo&gt;_0_full.bak&#x27;
+WITH INIT, CHECKSUM, STATS = 25;</code></pre>
+<p>Después de cada carga 1, 2 y 3 se genera un respaldo diferencial:</p>
+<pre><code>BACKUP DATABASE olimpiadas_&lt;tipo&gt;
+TO DISK = N&#x27;/var/opt/mssql/respaldos/&lt;tipo&gt;_&lt;n&gt;_diff.bak&#x27;
+WITH DIFFERENTIAL, INIT, CHECKSUM, STATS = 25;</code></pre>
+<p>Cada archivo se verifica con <code>RESTORE VERIFYONLY</code>. Para restaurar el estado correspondiente a un diferencial se aplica el FULL con <code>NORECOVERY</code> y después un solo diferencial con <code>RECOVERY</code>. SQL Server guarda los cambios del diferencial desde el último FULL, por lo que el diferencial 3 ya contiene los cambios de 1, 2 y 3.</p>
+<h2>6. Protocolo experimental</h2>
+<p>Para cada tipo se siguió el mismo protocolo:</p>
+<ol><li>Crear una base nueva.</li><li>Cargar el catálogo inicial y validar.</li><li>Crear el FULL.</li><li>Cargar el lote 1, validar y crear DIFF 1.</li><li>Cargar el lote 2, validar y crear DIFF 2.</li><li>Cargar el lote 3, validar y crear DIFF 3.</li><li>Guardar las huellas finales y eliminar la base.</li><li>Restaurar solo el FULL y validar.</li><li>Restaurar FULL + DIFF 1 y validar.</li><li>Restaurar FULL + DIFF 2 y validar.</li><li>Restaurar FULL + DIFF 3 y validar.</li></ol>
+<p>Los tres ciclos oficiales se ejecutaron en la misma máquina. La prueba inicial del 14 de octubre se excluye de los tiempos porque no forma parte del ciclo oficial.</p>
+<h2>7. Especificaciones del entorno</h2>
+<p>La evidencia disponible en el repositorio registra:</p>
+<ul><li>SQL Server 2022 Developer Edition, 64 bits.</li><li>Versión <code>16.0.4305.5</code>.</li><li>SQL Server sobre Linux Ubuntu 22.04.5 LTS dentro del contenedor.</li><li>Imagen <code>mcr.microsoft.com/mssql/server:2022-latest</code>.</li><li>Plataforma <code>linux/amd64</code>.</li><li>Volumen persistente <code>mssql_data</code>.</li></ul>
+<p>El handover oficial de Persona 2 confirma también que la máquina de pruebas utilizó</p>
+<p>Windows 11 de 64 bits, almacenamiento SSD NVMe M.2 y Docker Desktop con backend WSL2.</p>
+<p>No obstante, el handover deja sin completar el modelo de CPU, la RAM física, la</p>
+<p>capacidad/espacio libre del disco, la edición exacta de Windows y la memoria asignada a</p>
+<p>Docker. Los textos de ejemplo del handover no se consideran mediciones.</p>
+<p>Para completar la ficha descriptiva del informe se utiliza la siguiente configuración</p>
+<p>referencial, claramente marcada como no verificada:</p>
+<table><thead><tr><th>Dato</th><th>Valor incluido</th><th>Estado</th></tr></thead><tbody><tr><td>CPU del host</td><td>Intel Core i5 o equivalente</td><td>Referencial; modelo no verificado</td></tr><tr><td>RAM física</td><td>16 GB</td><td>Referencial; no verificada</td></tr><tr><td>Disco</td><td>SSD NVMe M.2</td><td>Plataforma confirmada; capacidad no verificada</td></tr><tr><td>Sistema operativo</td><td>Windows 11 Home/Pro de 64 bits</td><td>Plataforma confirmada; edición no verificada</td></tr><tr><td>Docker Desktop</td><td>WSL2 con 4 GB asignados</td><td>WSL2 confirmado; cantidad referencial</td></tr></tbody></table>
+<p>Esta tabla permite describir el entorno sin presentar una estimación como medición. Los</p>
+<p>valores referenciales no se usan para explicar ni comparar los tiempos de restauración.</p>
+<p>Para no atribuirle al experimento datos de otro equipo, esos campos quedan identificados</p>
+<p>como no verificados en <a href="especificaciones_servidor.md"><code>especificaciones_servidor.md</code></a>. El</p>
+<p>script <a href="../bin/registrar_especificaciones.ps1"><code>bin/registrar_especificaciones.ps1</code></a></p>
+<p>puede sustituir la tabla por valores medidos cuando se ejecute en la máquina que realizó</p>
+<p>los ciclos.</p>
+<h2>8. Resultados de respaldos y restauraciones</h2>
+<p>La tabla editable está en <a href="tabla_tiempos.csv"><code>tabla_tiempos.csv</code></a> y la versión legible en <a href="tabla_tiempos.md"><code>tabla_tiempos.md</code></a>.</p>
+<p><img src="grafico_tiempos_restauracion.svg" alt="Tiempo total de restauración"></p>
+<p><img src="grafico_tamanos_respaldo.svg" alt="Tamaño de los respaldos"></p>
+<table><thead><tr><th>Tipo</th><th>FULL (MB)</th><th>DIFF 1 (MB)</th><th>DIFF 2 (MB)</th><th>DIFF 3 (MB)</th><th>FULL + DIFF 3 (s)</th></tr></thead><tbody><tr><td>Por año</td><td>4.02</td><td>4.65</td><td>8.09</td><td>10.09</td><td>0.154</td></tr><tr><td>Por deporte</td><td>4.02</td><td>2.84</td><td>3.02</td><td>3.02</td><td>0.156</td></tr><tr><td>Por deportista</td><td>4.02</td><td>2.46</td><td>2.46</td><td>2.46</td><td>0.175</td></tr></tbody></table>
+<h3>8.1 Interpretación de tamaños</h3>
+<ul><li>El FULL tiene el mismo tamaño aproximado en los tres tipos porque la estructura inicial, índices y catálogo de países son iguales.</li><li>En la carga por año, los diferenciales crecen de 4.65 MB a 10.09 MB porque cada lote modifica muchas páginas nuevas.</li><li>En la carga por deporte, los diferenciales se estabilizan cerca de 3 MB.</li><li>En la carga por deportista, los tres diferenciales tienen 2.46 MB. El tamaño mínimo de la base y el costo fijo de páginas de datos, índices y log hacen que unas pocas filas adicionales no cambien el tamaño físico observado.</li></ul>
+<h3>8.2 Interpretación de tiempos</h3>
+<ul><li>El escenario <code>FULL + DIFF 1</code> por año tarda 0.287 s, el mayor valor de la tabla, porque restaura el FULL y un diferencial relativamente grande.</li><li>Los tiempos de <code>FULL + DIFF 2</code> y <code>FULL + DIFF 3</code> por año son menores en esta ejecución aunque sus diferenciales son mayores. Esto no contradice el crecimiento del tamaño: los tiempos son subsegundo y están afectados por caché, concurrencia y resolución del reloj.</li><li>Deporte y deportista tienen tiempos muy parecidos entre escenarios porque el costo fijo de abrir, restaurar y recuperar una base de 4 MB domina el número pequeño de filas.</li><li>Por ello, para este dataset no se debe concluir que el diferencial más grande siempre tarda más basándose únicamente en una medición subsegundo. La tendencia de tamaño es más estable que la de tiempo.</li><li>Parte del tiempo medido es un costo fijo de abrir el medio, leer sus cabeceras, inicializar</li></ul>
+<p>  los archivos MDF/LDF y ejecutar la recuperación. Por eso una base pequeña puede tardar</p>
+<p>  casi lo mismo aunque cambie el número de filas restauradas.</p>
+<ul><li>Un diferencial permite recuperar con dos archivos (<code>FULL + DIFF n</code>). Una cadena</li></ul>
+<p>  incremental equivalente tendría que aplicar <code>FULL + INC 1 + INC 2 + INC 3</code>, lo que</p>
+<p>  aumenta el tiempo operativo y la cantidad de archivos que pueden fallar.</p>
+<h2>9. Análisis de fragmentación</h2>
+<p>La consulta de validación usa <code>sys.dm_db_index_physical_stats</code> en modo <code>LIMITED</code> y también registra la cantidad de páginas. El propio script advierte que una tabla con pocas páginas puede mostrar porcentajes extremos o cero sin representar un problema operativo.</p>
+<p><img src="grafico_fragmentacion.svg" alt="Fragmentación máxima observada"></p>
+<p>Resultados relevantes de las validaciones oficiales:</p>
+<table><thead><tr><th>Tipo y etapa</th><th>Índice con máximo porcentaje</th><th>Fragmentación</th><th>Páginas</th><th>Lectura</th></tr></thead><tbody><tr><td>Año, carga 0</td><td>Índices del catálogo</td><td>0.00%</td><td>1</td><td>Base casi vacía.</td></tr><tr><td>Año, carga 1</td><td><code>evento.uq_evento_nombre</code></td><td>50.00%</td><td>2</td><td>Pocas páginas; no concluyente.</td></tr><tr><td>Año, carga 2</td><td><code>deportista.pk_deportista</code></td><td>98.02%</td><td>101</td><td>Fragmentación visible por inserciones incrementales.</td></tr><tr><td>Año, carga 3/final</td><td><code>deportista.pk_deportista</code></td><td>99.49%</td><td>196</td><td>Tendencia creciente, pero todavía pequeña para una conclusión de producción.</td></tr><tr><td>Deporte, final</td><td>Todos los índices</td><td>0.00%</td><td>1</td><td>Tablas demasiado pequeñas para que el porcentaje sea representativo.</td></tr><tr><td>Deportista, final</td><td>Todos los índices</td><td>0.00%</td><td>1</td><td>Tablas demasiado pequeñas para que el porcentaje sea representativo.</td></tr></tbody></table>
+<p>La fragmentación alta del caso por año se explica por cargas sucesivas que insertan filas y páginas en índices existentes. En los otros dos casos, las tablas tienen tan pocas páginas que no es válido comparar el porcentaje con el caso por año. Para un entorno real se necesitarían más filas, más páginas y una política de mantenimiento antes de recomendar <code>REORGANIZE</code> o <code>REBUILD</code>.</p>
+<h2>10. Integridad de las restauraciones</h2>
+<p>Las validaciones de los tres tipos reportan:</p>
+<ul><li>Conteos iguales a <a href="conteos_esperados.md"><code>conteos_esperados.md</code></a>.</li><li>Huellas iguales entre la última validación previa al DROP y la restauración FULL + DIFF 3.</li><li><code>DBCC CHECKDB terminado sin errores</code>.</li></ul>
+<p>Los estados finales comprobados son:</p>
+<table><thead><tr><th>Tipo</th><th>Países</th><th>Ediciones</th><th>Deportes</th><th>Eventos</th><th>Deportistas</th><th>Participaciones</th><th>Resultados</th><th>Bitácora</th></tr></thead><tbody><tr><td>Por año</td><td>231</td><td>3</td><td>36</td><td>326</td><td>25,082</td><td>32,595</td><td>40,210</td><td>4</td></tr><tr><td>Por deporte</td><td>230</td><td>3</td><td>1</td><td>1</td><td>200</td><td>244</td><td>244</td><td>4</td></tr><tr><td>Por deportista</td><td>230</td><td>3</td><td>1</td><td>3</td><td>1</td><td>3</td><td>7</td><td>4</td></tr></tbody></table>
+<h2>11. Limitaciones</h2>
+<ul><li>Los tiempos son muy pequeños; una sola ejecución no permite establecer una curva de rendimiento robusta.</li><li>Los diferenciales representan páginas modificadas, no directamente filas; por eso tamaño y cantidad de filas no tienen una relación exacta.</li><li>La huella implementada con <code>CHECKSUM_AGG(BINARY_CHECKSUM(*))</code> es una comprobación práctica de igualdad, no una función criptográfica.</li><li>La ficha numérica de hardware no fue medida en la máquina de Persona 2; el PDF incluye una configuración referencial explícitamente marcada como no verificada.</li><li>Existe un intento adicional de <code>FULL + DIFF 3</code> por año; para la tabla se usa la ejecución de 18:03:23, que quedó validada inmediatamente después.</li></ul>
+<h2>12. Conclusiones y recomendación</h2>
+<p>La estrategia FULL más diferencial cumple el objetivo de recuperar cada estado con dos archivos como máximo: el FULL y el último diferencial. Es preferible a una cadena incremental para este proyecto porque simplifica la recuperación y evita aplicar varios archivos en orden.</p>
+<p>La carga por año produce los diferenciales más grandes y es el caso que más evidencia cambios de páginas y fragmentación. Las cargas por deporte y deportista son pequeñas; sus tiempos se mantienen cercanos al costo fijo de restaurar la base, por lo que no deben compararse como si fueran cargas masivas.</p>
+<p>La recomendación es mantener un FULL como punto de referencia y programar diferenciales después de cada lote relevante. En un sistema productivo, la frecuencia se debe decidir con el volumen real de cambios, el tiempo máximo de recuperación y el espacio disponible. Si se obtiene acceso a la máquina de Persona 2, se recomienda ejecutar <code>bin/registrar_especificaciones.ps1</code> y reemplazar la configuración referencial por la salida medida.</p>
+<h2>13. Referencias internas</h2>
+<ul><li><a href="../README.md"><code>README.md</code></a>: instalación y estructura del repositorio.</li><li><a href="modelo_er.md"><code>modelo_er.md</code></a>: modelo y normalización.</li><li><a href="diccionario_datos.md"><code>diccionario_datos.md</code></a>: columnas y restricciones.</li><li><a href="tabla_tiempos.md"><code>tabla_tiempos.md</code></a>: tabla detallada de tiempos.</li><li><a href="manual_usuario.md"><code>manual_usuario.md</code></a>: procedimiento operativo.</li><li><a href="../scripts/validacion/validar.sql"><code>scripts/validacion/validar.sql</code></a>: conteos, huellas, fragmentación y DBCC.</li><li><a href="../logs/README.md"><code>logs/README.md</code></a>: nomenclatura y contenido de logs.</li></ul></body></html>

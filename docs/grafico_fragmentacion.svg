@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="470" viewBox="0 0 960 470">
+<rect width="100%" height="100%" fill="white"/>
+<text x="480.0" y="28.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="16px" font-weight="bold" fill="#222">Máximo de fragmentación observada</text>
+<line x1="70" y1="395.0" x2="930" y2="395.0" stroke="#dddddd"/>
+<text x="62.0" y="399.0" text-anchor="end" font-family="Arial, sans-serif" font-size="10px" font-weight="normal" fill="#222">0%</text>
+<line x1="70" y1="327.0" x2="930" y2="327.0" stroke="#dddddd"/>
+<text x="62.0" y="331.0" text-anchor="end" font-family="Arial, sans-serif" font-size="10px" font-weight="normal" fill="#222">20%</text>
+<line x1="70" y1="259.0" x2="930" y2="259.0" stroke="#dddddd"/>
+<text x="62.0" y="263.0" text-anchor="end" font-family="Arial, sans-serif" font-size="10px" font-weight="normal" fill="#222">40%</text>
+<line x1="70" y1="191.0" x2="930" y2="191.0" stroke="#dddddd"/>
+<text x="62.0" y="195.0" text-anchor="end" font-family="Arial, sans-serif" font-size="10px" font-weight="normal" fill="#222">60%</text>
+<line x1="70" y1="123.0" x2="930" y2="123.0" stroke="#dddddd"/>
+<text x="62.0" y="127.0" text-anchor="end" font-family="Arial, sans-serif" font-size="10px" font-weight="normal" fill="#222">80%</text>
+<line x1="70" y1="55.0" x2="930" y2="55.0" stroke="#dddddd"/>
+<text x="62.0" y="59.0" text-anchor="end" font-family="Arial, sans-serif" font-size="10px" font-weight="normal" fill="#222">100%</text>
+<line x1="70" y1="55" x2="70" y2="395" stroke="#333"/>
+<line x1="70" y1="395" x2="930" y2="395" stroke="#333"/>
+<text x="177.5" y="417.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11px" font-weight="normal" fill="#222">Carga 0</text>
+<rect x="113.0" y="395.0" width="41.0" height="1.0" fill="#3f3f3f"/>
+<rect x="156.0" y="395.0" width="41.0" height="1.0" fill="#777777"/>
+<rect x="199.0" y="395.0" width="41.0" height="1.0" fill="#aaaaaa"/>
+<text x="392.5" y="417.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11px" font-weight="normal" fill="#222">Carga 1</text>
+<rect x="328.0" y="225.0" width="41.0" height="170.0" fill="#3f3f3f"/>
+<text x="348.5" y="221.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="9px" font-weight="normal" fill="#222">50.00%</text>
+<rect x="371.0" y="395.0" width="41.0" height="1.0" fill="#777777"/>
+<rect x="414.0" y="395.0" width="41.0" height="1.0" fill="#aaaaaa"/>
+<text x="607.5" y="417.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11px" font-weight="normal" fill="#222">Carga 2</text>
+<rect x="543.0" y="61.7" width="41.0" height="333.3" fill="#3f3f3f"/>
+<text x="563.5" y="57.7" text-anchor="middle" font-family="Arial, sans-serif" font-size="9px" font-weight="normal" fill="#222">98.02%</text>
+<rect x="586.0" y="395.0" width="41.0" height="1.0" fill="#777777"/>
+<rect x="629.0" y="395.0" width="41.0" height="1.0" fill="#aaaaaa"/>
+<text x="822.5" y="417.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11px" font-weight="normal" fill="#222">Carga 3</text>
+<rect x="758.0" y="56.7" width="41.0" height="338.3" fill="#3f3f3f"/>
+<text x="778.5" y="52.7" text-anchor="middle" font-family="Arial, sans-serif" font-size="9px" font-weight="normal" fill="#222">99.49%</text>
+<rect x="801.0" y="395.0" width="41.0" height="1.0" fill="#777777"/>
+<rect x="844.0" y="395.0" width="41.0" height="1.0" fill="#aaaaaa"/>
+<rect x="70" y="436" width="12" height="12" fill="#3f3f3f"/>
+<text x="88.0" y="446.0" text-anchor="start" font-family="Arial, sans-serif" font-size="11px" font-weight="normal" fill="#222">Por año</text>
+<rect x="220" y="436" width="12" height="12" fill="#777777"/>
+<text x="238.0" y="446.0" text-anchor="start" font-family="Arial, sans-serif" font-size="11px" font-weight="normal" fill="#222">Por deporte</text>
+<rect x="370" y="436" width="12" height="12" fill="#aaaaaa"/>
+<text x="388.0" y="446.0" text-anchor="start" font-family="Arial, sans-serif" font-size="11px" font-weight="normal" fill="#222">Por deportista</text>
+</svg>

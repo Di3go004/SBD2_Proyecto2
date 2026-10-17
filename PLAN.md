@@ -36,7 +36,7 @@ La base de datos ya funciona. La prueba de carga dio exactamente los conteos esp
 | Staging | 271,116 resultados y 230 países cargados desde CSV | `logs/…_01_staging_master.log` |
 | Modelo y procedimientos de carga | 7 tablas normalizadas + bitácora; cargas por año, deporte y deportista | `scripts/ddl/` |
 | Prueba de carga 0 y 1 (por año) | 230 países, luego 10,899 deportistas y 13,602 resultados, igual a lo esperado; DBCC CHECKDB sin errores | `logs/…_validar_olimpiadas_anio.log` |
-| Persistencia de Docker | Mismos conteos y mismas huellas antes y después de `docker compose down` / `up` | `capturas/persistencia/01_persistencia_docker.png` |
+| Persistencia de Docker | Mismos conteos y mismas huellas antes y después de `docker compose down` / `up` | `capturas/persistencia/Captura Persistencia.png` |
 
 Esa prueba no cuenta como ejecución oficial. El ciclo oficial empieza otra vez con `bin/preparar_bd.sh`.
 
@@ -45,21 +45,21 @@ Esa prueba no cuenta como ejecución oficial. El ciclo oficial empieza otra vez 
 | Tarea | Responsable | Día | Estado |
 | --- | --- | --- | --- |
 | Entorno, staging, modelo, cargas y validación | Persona 1 | Mié 14 | Hecho |
-| Captura de persistencia y push del repo | Persona 1 | Mié 14 | En curso |
-| Agregar a Persona 2 y 3 como colaboradores en GitHub | Persona 1 | Mié 14 | Pendiente |
-| Clonar el repo y levantar el entorno (ver abajo) | Persona 2 | Jue 15 temprano | Pendiente |
-| Scripts de BACKUP FULL, diferencial y listado de respaldos | Persona 2 | Jue 15 | Pendiente |
-| Scripts de DROP y restauraciones | Persona 2 | Jue 15 | Pendiente |
-| Ciclo oficial por año | Persona 2 | Jue 15 noche | Pendiente |
-| Ciclo oficial por deporte | Persona 2 | Vie 16 | Pendiente |
-| Ciclo oficial por deportista | Persona 2 | Sáb 17 temprano | Pendiente |
-| Manual de usuario: respaldos, restauración, lectura de logs | Persona 2 | Vie 16 | Pendiente |
-| Diagrama ER exportado y diccionario de datos | Persona 1 | Jue 15 | Pendiente |
-| Manual de usuario: instalación, carga y validación | Persona 1 | Vie 16 | Pendiente |
-| Esqueleto del PDF, metodología y plan de respaldo | Persona 3 | Jue 15 | Pendiente |
-| Especificaciones del servidor (máquina de Persona 2) | Persona 3 | Jue 15 | Pendiente |
-| Tabla de tiempos, gráficos y fragmentación | Persona 3 | Vie 16 – Sáb 17 | Pendiente |
-| Conclusiones y PDF final | Persona 3 | Sáb 17 | Pendiente |
+| Captura de persistencia y push del repo | Persona 1 | Mié 14 | Hecho |
+| Agregar a Persona 2 y 3 como colaboradores en GitHub | Persona 1 | Mié 14 | Pendiente de confirmar en GitHub |
+| Clonar el repo y levantar el entorno (ver abajo) | Persona 2 | Jue 15 temprano | Hecho |
+| Scripts de BACKUP FULL, diferencial y listado de respaldos | Persona 2 | Jue 15 | Hecho |
+| Scripts de DROP y restauraciones | Persona 2 | Jue 15 | Hecho |
+| Ciclo oficial por año | Persona 2 | Jue 15 noche | Hecho |
+| Ciclo oficial por deporte | Persona 2 | Vie 16 | Hecho |
+| Ciclo oficial por deportista | Persona 2 | Sáb 17 temprano | Hecho |
+| Manual de usuario: respaldos, restauración, lectura de logs | Persona 2 | Vie 16 | Hecho |
+| Diagrama ER exportado y diccionario de datos | Persona 1 | Jue 15 | Hecho |
+| Manual de usuario: instalación, carga y validación | Persona 1 | Vie 16 | Hecho |
+| Esqueleto del PDF, metodología y plan de respaldo | Persona 3 | Jue 15 | Hecho |
+| Especificaciones del servidor (máquina de Persona 2) | Persona 3 | Jue 15 | Hecho con configuración referencial explícitamente no verificada |
+| Tabla de tiempos, gráficos y fragmentación | Persona 3 | Vie 16 – Sáb 17 | Hecho |
+| Conclusiones y PDF final | Persona 3 | Sáb 17 | Hecho, sujeto a completar la ficha del servidor |
 | Entrega en UEDI, los tres integrantes | Todos | Sáb 17 | Pendiente |
 
 ### Cómo arrancan Persona 2 y Persona 3
@@ -209,12 +209,14 @@ Opcionales, solo si sobra tiempo: `WITH COMPRESSION` (comparar tamaño y tiempo)
 Si falta cualquiera de los primeros siete puntos, la nota es **cero**, aunque todo lo demás funcione (sección 8.1 del enunciado).
 
 - [ ] Todos los archivos y evidencias entregados antes de la hora límite del sábado 17
-- [ ] Los 3 ciclos completos: cargas, respaldos y restauraciones funcionando
-- [ ] Nada copiado sin referencia; el dataset y cualquier fuente, citados en el PDF
-- [ ] Manual técnico en PDF: metodología, modelo ER, plan de respaldo, especificaciones del servidor, análisis con gráficos y conclusiones
-- [ ] Manual de usuario: cada tipo de backup, cómo restaurar, cómo leer los logs, cómo validar
-- [ ] Repositorio ordenado por tipo (`ddl`, `carga`, `backup`, `restauracion`, `validacion`) con logs comentados
+- [x] Los 3 ciclos completos: cargas, respaldos y restauraciones funcionando
+- [x] Nada copiado sin referencia; el dataset y cualquier fuente, citados en el PDF
+- [x] Manual técnico en PDF: metodología, modelo ER, plan de respaldo, ficha referencial del servidor, análisis con gráficos y conclusiones (hardware exacto no verificado)
+- [x] Manual de usuario: cada tipo de backup, cómo restaurar, cómo leer los logs, cómo validar
+- [x] Repositorio ordenado por tipo (`ddl`, `carga`, `backup`, `restauracion`, `validacion`) con logs comentados
 - [ ] **Los tres** integrantes suben la entrega en UEDI
-- [ ] Captura de la prueba de persistencia: `docker compose down` / `up` con los mismos conteos
-- [ ] Capturas de cada carga y cada restauración con fecha y hora visibles
-- [ ] Tabla de tiempos completa y huellas iguales antes del DROP y después de FULL + DIFF 3
+- [x] Captura de la prueba de persistencia: `docker compose down` / `up` con los mismos conteos
+- [x] Capturas de cada carga y cada restauración con fecha y hora visibles
+- [x] Tabla de tiempos completa y huellas iguales antes del DROP y después de FULL + DIFF 3
+
+La plataforma general queda confirmada por el handover: Windows 11 de 64 bits, SSD NVMe M.2 y Docker Desktop con WSL2. El manual incluye una configuración referencial —Intel Core i5 o equivalente, 16 GB de RAM y 4 GB para Docker— marcada explícitamente como no verificada. El script `bin/registrar_especificaciones.ps1` permite sustituirla por valores medidos si se obtiene acceso a la máquina de Persona 2.
